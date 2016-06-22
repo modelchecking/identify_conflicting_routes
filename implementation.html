@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Design by http://www.bluewebtemplates.com
+Released for free under a Creative Commons Attribution 3.0 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Identifying Conflicting Routes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<!-- CuFon: Enables smooth pretty custom font rendering. 100% SEO friendly. To disable, remove this section -->
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/arial.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+<!-- CuFon ends -->
+</head>
+<body>
+<div class="main" id="top">
+
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="abstract.html">Abstract</a></li>
+          <li class="active"><a href="implementation.html">Implementation</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+      <div><h1><a href="index.html">Identifying Conflicting Routes in Control Table of Indian Railways Interlocking System Using NuSMV</a></h1></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span>Railway Section Layout</span> - Sample</h2>
+          <img class="implementation-img" src="images/sample_railway_layout.jpg" width="700" alt="Sample Railway Section Layout">
+          <center><p>Figure 1: Sample Railway Section Layout</p></center>
+          <p>An example railway section layout has been given above. In this example, there are two track lines with 17 track segments, 4 points, 14 signals and 9 labels. To give this layout as input, it must be specified using a formal model such as graph. All the labels and ID are specified as attibutes of vertices and edges in the graph.</p>
+          <p>This layout consists of 5 different types of signals namely, Calling on home, Home, Shunt, Starter and Advanced starter. The 14 signals can be classified into these types. 1B and 32B are calling on home. 1A and 32A are home. 9 and 17 are shunt. 3, 2, 6, 30, 31 and 27 are starter. 8 and 25 are advanced starter. The starter signals can be further classified into main line starter(2 and 31) and loop line starter(3, 6, 30 and 27). A train can move either towards up or towards down through a railway section. Hence it is important to provide signalling for both the directions.</p>
+          <p>The points 50, 52, 63 and 65 allow a train to move from main line to loop line or vice versa. A main line is the sequence of track segments that can allow a train to move from one railway section to another. A loop line is a sequence of track segments that branches from main line. When calling on home and shunt signal are given to the train driver, he need not stop the train at the specified track segment. The difference between calling on home and shunt signal is that the train moving on calling on home signal will have higher speed than shunt signal. The train following shunt signal will be moving at a very low speed of 10-20 kmph. Also, for train following shunt signal, there will be a shunter person to monitor the train movement which is not in calling on home.</p>
+        </div>
+        <div class="article">
+          <h2><span>Graph Representation</span> of Sample Layout</h2>
+          <img class="implementation-img" src="images/layout_as_graph.jpg" width="700" alt="Graph Representation of Sample Layout">
+          <center><p>Figure 2: Graph Representation of Sample Layout</p></center>
+          <p>The sample railway layout is represented as a bidirectional graph to make it easier for a program to parse and identify the various aspects of a railway section. The track segments are represented as vertices using circular nodes. An edge connects two vertices if a train can move from one track segment to another. Labels for track segments are represented using elliptical nodes. Signals at a track segment are represented using rectangular nodes. Point IDs for specific track segments are represented using triangular nodes. The graph for above layout is given</p>
+        </div>
+        <div class="article">
+          <h2><span>Architecture</span> of Project</h2>
+          <p>The graph as shown above is represented as text in a file and given as input to the program. The program parses the input file and recognizes the graph as adjacency list. Other information such as signals, point IDs and track labels are also parsed and recognized. The input file consists of 6 sections, each separated by the keyword 'END'. The system that has been developed by us is based on the architecture given below.</p>
+          <img class="implementation-img" src="images/project_architecture.jpg" width="500" alt="Project Architecture">
+          <center><p>Figure 3: Project Architecture</p></center>
+          <p>The program which generates the control table for a given layout is built using Ruby v1.9.3 programming language in Ubuntu 14.04 LTS OS. The Ruby program generates NuSMV program which is used to do model checking and the final output is produced by using LaTeX software.</p>
+          <p>The reason to use Ruby programming language is to make exploit Hash for searching the required objects based on its ID and to run Linux Terminal commands from the program like executing NuSMV program or compiling the LaTeX code. NuSMV was chosen due to its simple syntax to represent a model. LaTeX was chosen to produce final output, as tabular format of output is the required one and LaTeX gave the best optimal solution to generate output as a PDF file.</p>
+          <p>The code developed by us, can be downloaded from <a href="downloads.html#downloads">here</a>. Install Ruby (<a href="">this</a> may be useful to install Ruby), LaTeX and NuSMV before running the code.</p>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; Copyright v1.0 2016. <br> Credits: <a href="http://www.bluewebtemplates.com/website-templates/bluecarbon-website-template/" target="_blank">Blue Carbon</a></p>
+      <ul class="fmenu">
+        <li><a href="#top">Top of this page</a></li>
+      </ul>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
